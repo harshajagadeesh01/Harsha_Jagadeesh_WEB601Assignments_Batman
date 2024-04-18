@@ -1,0 +1,30 @@
+.content-card {
+    border: 1px solid #000;
+    padding: 10px;
+    margin-bottom: 10px;
+  
+    &.first {
+      border-width: 2px;
+    }
+  
+    .card-container {
+      display: flex;
+      flex-direction: column;
+  
+      .content-details {
+        p {
+          margin-bottom: 5px; 
+        }
+  
+        img {
+          max-width: 100%;
+          margin-bottom: 10px;
+          cursor: pointer; 
+        }
+        
+      }
+
+    }
+
+  }
+  
