@@ -1,0 +1,12 @@
+<p>modify-content works!</p>
+
+<form (ngSubmit)="onSubmit()">
+    <input type="text" placeholder="Title" name="title" [(ngModel)]="newContent.title" required>
+    <input type="text" placeholder="Description" name="description" [(ngModel)]="newContent.description" required>
+    <input type="text" placeholder="Creator" name="creator" [(ngModel)]="newContent.creator" required>
+    <input type="text" placeholder="Image URL" name="imgURL" [(ngModel)]="newContent.imgURL">
+    <input type="text" placeholder="Type" name="type" [(ngModel)]="newContent.type">
+    <input type="text" placeholder="Tags" name="tags" [(ngModel)]="newContent.tags">
+    <button type="submit">Add Content</button>
+</form>
+  
