@@ -1,0 +1,81 @@
+<!-- Keep for tests <p>content-list works!</p> -->
+<app-modify-content></app-modify-content>
+
+<mat-form-field class="search-container">
+  <mat-label>Search Content</mat-label>
+  <input matInput [(ngModel)]="searchTitle" placeholder="Enter content title">
+  <p class="search-result" *ngIf="searchResult" [ngClass]="{'found': contentFound, 'not-found': !contentFound}"> {{ searchResult }}</p>
+</mat-form-field>
+<button mat-flat-button color="primary" (click)="searchContent()">Search</button>
+
+<button mat-flat-button color="warn" (click)="imBatman()">Click me!</button>
+
+
+<h1>Single Item</h1>
+<mat-card *ngIf="singleItemId" class="cards">
+  <mat-card-header>
+    <mat-card-title>{{ singleItemId.title }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <img mat-card-image *ngIf="!singleItemId.imgURL" src="/assets/images/batmanLogo.jpg" alt="{{ singleItemId.title }}">
+    <img mat-card-image [src]="singleItemId.imgURL" alt="{{ singleItemId.title }}">
+    <p><strong>Plot:</strong> {{ singleItemId.description }}</p>
+    <p><strong>Creator:</strong> {{ singleItemId.creator }}</p>
+    <p appHoverOver><strong>Type:</strong> {{ singleItemId.type }}</p>
+    <p appHoverOver affect="bold"><strong>Tags:</strong> {{ singleItemId.tags ? singleItemId.tags.join(', ') : '' }}</p>
+  </mat-card-content>
+</mat-card>
+
+<h1>All Content</h1>
+<mat-card *ngIf="contentItems" class="cards">
+  <mat-card *ngFor="let contentItem of contentItems" (click)="displayContentDetails(contentItem)" class="cards">
+    <mat-card-header>
+      <mat-card-title>{{ contentItem.title }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <img mat-card-image *ngIf="!contentItem.imgURL" src="/assets/images/batmanLogo.jpg" alt="{{ contentItem.title }}">
+      <img mat-card-image [src]="contentItem.imgURL">
+      <p><strong>Plot:</strong> {{ contentItem.description }}</p>
+      <p><strong>Creator:</strong> {{ contentItem.creator }}</p>
+      <p appHoverOver><strong>Type:</strong> {{ contentItem.type }}</p>
+      <p appHoverOver affect="bold"><strong>Tags:</strong> {{ contentItem.tags ? contentItem.tags.join(', ') : '' }}</p>
+    </mat-card-content>
+  </mat-card>
+</mat-card>
+
+<h1>Movies</h1>
+<mat-card *ngIf="contentItems" class="cards">
+  <mat-card *ngFor="let contentItem of contentItems | contentTypeFilter:'Movie'" (click)="displayContentDetails(contentItem)" class="cards">
+    <mat-card-header>
+      <mat-card-title>{{ contentItem.title }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <img mat-card-image *ngIf="!contentItem.imgURL" src="/assets/images/batmanLogo.jpg" alt="{{ contentItem.title }}">
+      <img mat-card-image [src]="contentItem.imgURL" alt="{{ contentItem.title }}">
+      <p><strong>Plot:</strong> {{ contentItem.description }}</p>
+      <p><strong>Creator:</strong> {{ contentItem.creator }}</p>
+      <p appHoverOver><strong>Type:</strong> {{ contentItem.type }}</p>
+      <p appHoverOver affect="bold"><strong>Tags:</strong> {{ contentItem.tags ? contentItem.tags.join(', ') : '' }}</p>
+    </mat-card-content>
+  </mat-card>
+</mat-card>
+
+<h1>Animated Series</h1>
+<mat-card *ngIf="contentItems" class="cards">
+  <mat-card *ngFor="let contentItem of contentItems | contentTypeFilter:'Animated Series'" (click)="displayContentDetails(contentItem)" class="cards">
+    <mat-card-header>
+      <mat-card-title>{{ contentItem.title }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <img mat-card-image *ngIf="!contentItem.imgURL" src="/assets/images/batmanLogo.jpg" alt="{{ contentItem.title }}">
+      <img mat-card-image [src]="contentItem.imgURL" alt="{{ contentItem.title }}">
+      <p><strong>Plot:</strong> {{ contentItem.description }}</p>
+      <p><strong>Creator:</strong> {{ contentItem.creator }}</p>
+      <p appHoverOver><strong>Type:</strong> {{ contentItem.type }}</p>
+      <p appHoverOver affect="bold"><strong>Tags:</strong> {{ contentItem.tags ? contentItem.tags.join(', ') : '' }}</p>
+    </mat-card-content>
+  </mat-card>
+</mat-card>
+
+
+
