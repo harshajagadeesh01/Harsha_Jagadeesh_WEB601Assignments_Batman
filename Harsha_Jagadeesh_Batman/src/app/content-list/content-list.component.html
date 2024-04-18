@@ -1,0 +1,64 @@
+<!-- Keep for tests <p>content-list works!</p> -->
+
+<div class="search-container">
+  <input type="text" [(ngModel)]="searchTitle" placeholder="Enter content title">
+  <button (click)="searchContent()">Search</button>
+  <p class="search-result" *ngIf="searchResult" [ngClass]="{'found': contentFound, 'not-found': !contentFound}">
+    {{ searchResult }}
+  </p>
+</div>
+
+<h1>Single Item</h1>
+<div class="single-card" *ngIf="singleItemId">
+  <h2>{{ singleItemId.title }}</h2>
+  <img *ngIf="!singleItemId.imgURL" src="/assets/images/batmanLogo.jpg" alt="{{ singleItemId.title }}">
+  <img [src]="singleItemId.imgURL" alt="{{ singleItemId.title }}">
+  <p><strong>Plot:</strong> {{ singleItemId.description }}</p>
+  <p><strong>Creator:</strong> {{ singleItemId.creator }}</p>
+  <p appHoverOver><strong>Type:</strong> {{ singleItemId.type }}</p>
+  <p appHoverOver affect="bold"><strong>Tags:</strong> {{ singleItemId.tags ? singleItemId.tags.join(', ') : '' }}</p>
+</div>
+
+<h1>All Content</h1>
+<div class="card-container" *ngIf="contentItems">
+  <div class="card" *ngFor="let contentItem of contentItems">
+    <h3>{{ contentItem.title }}</h3>
+    <img *ngIf="!contentItem.imgURL" src="/assets/images/batmanLogo.jpg" alt="{{ contentItem.title }}" (click)="displayContentDetails(contentItem)">
+    <img [src]="contentItem.imgURL" (click)="displayContentDetails(contentItem)">
+    <p><strong>Plot:</strong> {{ contentItem.description }}</p>
+    <p><strong>Creator:</strong> {{ contentItem.creator }}</p>
+    <p appHoverOver><strong>Type:</strong> {{ contentItem.type }}</p>
+    <p appHoverOver affect="bold"><strong>Tags:</strong> {{ contentItem.tags ? contentItem.tags.join(', ') : '' }}</p>
+  </div>
+</div>
+
+
+
+<h1>Movies</h1>
+<div class="card-container" *ngIf="contentItems">
+  <div class="card-movie" *ngFor="let contentItem of contentItems | contentTypeFilter:'Movie'">
+      <h3>{{ contentItem.title }}</h3>
+      <img *ngIf="!contentItem.imgURL" src="/assets/images/batmanLogo.jpg" alt="{{ contentItem.title }}" (click)="displayContentDetails(contentItem)">
+      <img [src]="contentItem.imgURL" alt="{{ contentItem.title }}" (click)="displayContentDetails(contentItem)">
+      <p><strong>Plot:</strong> {{ contentItem.description }}</p>
+      <p><strong>Creator:</strong> {{ contentItem.creator }}</p>
+      <p appHoverOver><strong>Type:</strong> {{ contentItem.type }}</p>
+      <p appHoverOver affect="bold"><strong>Tags:</strong> {{ contentItem.tags ? contentItem.tags.join(', ') : '' }}</p>
+    </div>
+</div>
+
+<h1>Animated Series</h1>
+<div class="card-container" *ngIf="contentItems">
+  <div class="card-series" *ngFor="let contentItem of contentItems | contentTypeFilter:'Animated Series'">
+      <h3>{{ contentItem.title }}</h3>
+      <img *ngIf="!contentItem.imgURL" src="/assets/images/batmanLogo.jpg" alt="{{ contentItem.title }}" (click)="displayContentDetails(contentItem)">
+      <img [src]="contentItem.imgURL" alt="{{ contentItem.title }}" (click)="displayContentDetails(contentItem)">
+      <p><strong>Plot:</strong> {{ contentItem.description }}</p>
+      <p><strong>Creator:</strong> {{ contentItem.creator }}</p>
+      <p appHoverOver><strong>Type:</strong> {{ contentItem.type }}</p>
+      <p appHoverOver affect="bold"><strong>Tags:</strong> {{ contentItem.tags ? contentItem.tags.join(', ') : '' }}</p>
+    </div>
+</div>
+
+
+
