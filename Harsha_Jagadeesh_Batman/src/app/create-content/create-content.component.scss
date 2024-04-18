@@ -1,0 +1,35 @@
+$border-color: black;  
+$padding: 1rem;
+
+h1 {
+  text-align: center;
+}
+
+form {
+  border: 1px solid $border-color;
+  padding: $padding;
+  background-color: slategray;
+}
+
+input, textarea {
+  padding: 1em;
+  border: 1px solid $border-color;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 3px;
+}
+
+label {
+  margin-bottom: 3em;
+  font-weight: bold;
+}
+
+button {
+  margin-top: 1em;
+}
+
+.error-message {
+  margin-top: 1em;
+  color: red;
+  font-weight: bold;
+}

@@ -1,0 +1,39 @@
+<!-- Keep for testing <p>create-content works!</p> -->
+
+
+<h1>Form to add new content</h1>
+<form class="form" (ngSubmit)="addNewItem()">
+    <div>
+        <label for="title">ID:</label>
+        <input type="text" id="title" [(ngModel)]="newItem.id" name="title" required>
+      </div>
+    <div>
+      <label for="title">Title:</label>
+      <input type="text" id="title" [(ngModel)]="newItem.title" name="title" required>
+    </div>
+    <div>
+      <label for="description">Description:</label>
+      <textarea id="description" [(ngModel)]="newItem.description" name="description" required></textarea>
+    </div>
+    <div>
+      <label for="creator">Creator:</label>
+      <input type="text" id="creator" [(ngModel)]="newItem.creator" name="creator">
+    </div>
+    <div>
+      <label for="imgURL">Image URL:</label>
+      <input type="text" id="imgURL" [(ngModel)]="newItem.imgURL" name="imgURL">
+    </div>
+    <div>
+      <label for="type">Type:</label>
+      <input type="text" id="type" [(ngModel)]="newItem.type" name="type">
+    </div>
+    <div>
+      <label for="tags">Tags:</label>
+      <input type="text" id="tags" [(ngModel)]="newItem.tags" name="tags">
+    </div>
+    <button type="submit">Add Item</button>
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  </form>
+  
